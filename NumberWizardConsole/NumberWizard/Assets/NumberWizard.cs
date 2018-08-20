@@ -1,32 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class NumberWizard : MonoBehaviour {
+public class NumberWizard : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () 
-	{
+    private int max = 1000;
+    private int min = 1;
+    private int guess = 0;
+    private bool init = false;
+    private KeyCode keyPressed;
 
-		var max = 1000;
-		var min = 1;
+    // Use this for initialization
+    void Start()
+    {
+        Debug.Log("Think a number between 1000 to 1.....Press Space");
+        Input.
+    }
 
-		Debug.Log("Welcome to number wizard, yo");
-		Debug.Log("Pick a number...");
-		Debug.Log("Highest number you can pick is: " + max);
-		Debug.Log("Lowest number you can pick is: " + min);
-		Debug.Log("Tell me if your number is higher or lower than 500");
-		Debug.Log("Push 9 = Higher, Push Down = Lower, Push Enter = Correct");
+    // Update is called once per frame
+    void Update()
+    {
+        //Detect when the up arrow key is pressed down
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!init)
+            {
+                CalculateGuess();
+                init = true;
+            }
+
+            Debug.Log(string.Format("Is your number: {0}", guess));
+            Debug.Log("Press Up arrow if is greatest otherwise press Down arrow");
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            min = guess;
+            CalculateGuess();
+            Debug.Log(string.Format("Is your number: {0}", guess));
+            Debug.Log("Press Up arrow if is greatest otherwise press Down arrow");
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            max = guess;
+            CalculateGuess();
+            Debug.Log(string.Format("Is your number: {0}", guess));
+            Debug.Log("Press Up arrow if is greatest otherwise press Down arrow");
+            KeyCode.
+        }
+        else
+        {
+        }
 
 
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		//Detect when the up arrow key is pressed down
-        if (Input.GetKeyDown(KeyCode.Keypad9))
-            Debug.Log("Up Arrow key was pressed.");
+    }
 
-	}
+    private void CalculateGuess()
+    {
+        guess = (max + min) / 2;
+    }
 }
