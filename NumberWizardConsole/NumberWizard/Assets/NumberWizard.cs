@@ -13,6 +13,7 @@ public class NumberWizard : MonoBehaviour
     void Start()
     {
         Debug.Log("Think a number between 1000 to 1.....Press Space");
+
     }
 
     // Update is called once per frame
